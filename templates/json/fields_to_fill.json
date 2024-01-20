@@ -1,0 +1,26 @@
+[
+  {
+    "nome": "Fulano de Tal",
+    "rg": "1234567",
+    "cpf": "98765432100",
+    "nomeAutorizado": "Beltrano da Silva",
+    "rgAutorizado": "7654321",
+    "cpfAutorizado": "12345678900",
+    "nomeDocumento": "Certidão de Nascimento",
+    "nomeCartorio": "Cartório ABC",
+    "cidade": "Cidade A",
+    "data": "2024-01-20"
+  },
+  {
+    "nome": "Ciclana Oliveira",
+    "rg": "9876543",
+    "cpf": "12345678901",
+    "nomeAutorizado": "José da Silva",
+    "rgAutorizado": "8765432",
+    "cpfAutorizado": "10987654321",
+    "nomeDocumento": "Carteira de Identidade",
+    "nomeCartorio": "Cartório XYZ",
+    "cidade": "Cidade B",
+    "data": "2024-01-21"
+  }
+]

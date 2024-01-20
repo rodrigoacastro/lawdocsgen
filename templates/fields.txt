@@ -1,0 +1,7 @@
+[Nome] 
+[RG]
+[CPF] 
+[Nome do Documento] 
+[Nome do Cartório]
+[Cidade] 
+[Data]
