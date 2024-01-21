@@ -14,6 +14,10 @@ file_path = './templates/html/procuracao_mock1.html'
 output_json_file = './templates/json/html_fields.json'
 
 json_data = process_file_and_save_to_json(file_path, output_json_file)
+
+# def process_file_and_save_to_json(data, template_content, output_folder):
+
+
 print(json_data)
 
 # # Example usage
@@ -39,13 +43,18 @@ print(json_data)
 # ]
 
 template_path = './templates/html/procuracao_mock1.html'
-output_path = './output/html'
+output_path = './output/html/'
+
+print('rodou até aqui')
 
 # Clear the content of the output file
 # with open(output_path, 'w', encoding='utf-8'):
 #     pass
 
-# Call the function to fill the HTML with data from the JSON
-fill_html_with_json(template_path, json_data, output_path)
+# # Call the function to fill the HTML with data from the JSON
+# fill_html_with_json(template_path, json_data, output_path)
 
+# result_message = fill_html_with_json(json_data, template_content, output_folder)
+
+result_message = fill_and_save_html(json_data, template_path, output_path)
 
