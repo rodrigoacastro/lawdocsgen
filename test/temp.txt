@@ -1,0 +1,2 @@
+file_path = './templates/html/procuracao_mock1.html'
+output_json_file = './output/json/output.json'
