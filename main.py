@@ -17,7 +17,11 @@ json_data = process_file_and_save_to_json(file_path = './templates/html/procurac
 # def process_file_and_save_to_json(data, template_content, output_folder):
 
 
-print(json_data)
+# print(json_data)
+'''
+{"Nome": "Nome", "RG": "RG", "CPF": "CPF", "Nome do Documento": "Nome do Documento", 
+"Nome do Cart\u00f3rio": "Nome do Cart\u00f3rio", "Cidade": "Cidade", "Data": "Data"}
+'''
 
 # # Example usage
 # json_data = [
@@ -49,8 +53,9 @@ print(json_data)
 
 # Call the function to fill the HTML with data from the JSON
 
-print('rodou até aqui')
-
+# testing
+json_data = {"Nome": "Nome2", "RG": "RG2", "CPF": "CPF2", "Nome do Documento": "Nome do Documento2", 
+"Nome do Cart\u00f3rio": "Nome do Cart\u00f3rio2", "Cidade": "Cidade2", "Data": "Data2"}
 
 # fix this function
 result_message = fill_html_with_json2(json_data = json_data, 

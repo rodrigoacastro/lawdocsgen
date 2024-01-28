@@ -29,7 +29,8 @@ def extract_fields_from_file(file_path):
 
             # Extract all fields in the format [value]
             matches = field_pattern.findall(html_content)
-
+            print(f'matches: {matches}')
+            
             # Creating a dictionary with the extracted values
             result = {'success': {match: match for match in matches}}
 
@@ -55,9 +56,9 @@ def save_to_json(data, output_file):
     """
     try:
         with open(output_file, 'w', encoding='utf-8') as json_file:
-            json.dump(data, json_file, indent=2)
-        return f'Data saved to JSON file successfully: {output_file}'
-
+            json.dump(data, json_file, indent=2) 
+        print(f'Data saved to JSON file successfully: {output_file}')
+        return ( json.dumps(data) ) # returns object
     except Exception as e:
         return f'An error occurred while saving to JSON file: {str(e)}'
 
@@ -248,21 +249,49 @@ def fill_html_with_json2(json_data, template_path, output_folder):
         with open(template_path, 'r', encoding='utf-8') as template_file:
             template_content = template_file.read()
 
+        # print(template_content)
         # If json_data is a single dictionary, convert it to a list for uniform processing
+
+        # print(f'json_data type: {type(json_data)}')
+
+        if isinstance(json_data, str):
+            # print(f'json_data is string')
+            json_data = json.loads(json_data) # convert dict-like string into dictionary object
+            # print(f'json_data type: {type(json_data)}')
+
         if isinstance(json_data, dict):
             json_data = [json_data]
+            # print(f'json_data: {json_data}') # test
+            '''
+            json_data: [{'Nome': 'Nome', 'RG': 'RG', 'CPF': 'CPF', 
+            'Nome do Documento': 'Nome do Documento', 'Nome do Cartório': 'Nome do Cartório', 
+            'Cidade': 'Cidade', 'Data': 'Data'}]                                                               
+            '''
+            # print('essa parte rodou agora')
 
         # Loop through the data sets in the JSON and substitute in the HTML
+        # print(f'json_data: {json_data}') # test
         for data in json_data:
+            print(f'data: {data}') # test
+            '''
+            data: {'Nome': 'Nome', 'RG': 'RG', 'CPF': 'CPF', 'Nome do Documento': 'Nome do Documento', 
+            'Nome do Cartório': 'Nome do Cartório', 'Cidade': 'Cidade', 'Data': 'Data'}
+            '''
             # Create a unique identifier for each field (using Nome and Data fields as an example)
             unique_identifier = f"{data.get('Nome', '')}_{data.get('Data', '')}"
-            
+            # print(f'unique_identifier: {unique_identifier}')
+            # Nome_Data
+
             # Construct the output filename with the unique identifier
             output_filename = os.path.join(output_folder, f"output_{unique_identifier}.html")
+            # print(f'output_filename: {output_filename}')
+            # ./output/html/output_Nome_Data.html
 
             try:
                 # Substitute data in the HTML template
                 html_filled = template_content.format_map(data)
+                print(f'html_filled: {html_filled}')
+
 
                 # Save the filled HTML to the output file
                 with open(output_filename, 'w', encoding='utf-8') as output_file:
