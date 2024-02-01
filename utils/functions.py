@@ -284,13 +284,13 @@ def fill_html_with_json2(json_data, template_path, output_folder):
 
             # Construct the output filename with the unique identifier
             output_filename = os.path.join(output_folder, f"output_{unique_identifier}.html")
-            # print(f'output_filename: {output_filename}')
+            print(f'output_filename: {output_filename}')
             # ./output/html/output_Nome_Data.html
 
             try:
                 # Substitute data in the HTML template
                 html_filled = template_content.format_map(data)
-                print(f'html_filled: {html_filled}')
+                # print(f'html_filled: {html_filled}')
 
 
                 # Save the filled HTML to the output file
@@ -303,3 +303,53 @@ def fill_html_with_json2(json_data, template_path, output_folder):
         print(f'Error: Template file not found: {template_path}')
     except Exception as e:
         print(f'An error occurred: {str(e)}')
+
+
+def read_json_and_extract_values(json_file_path):
+    try:
+        with open(json_file_path, 'r') as file:
+            data = json.load(file)
+
+            if isinstance(data, list):
+                # If the JSON data is a list, create a list of dictionaries with index as key
+                result_list = [{str(index): value} for index, value in enumerate(data)]
+            elif isinstance(data, dict):
+                # If the JSON data is a dictionary, create a list of dictionaries with keys as in the JSON
+                result_list = [{key: value} for key, value in data.items()]
+            else:
+                print("Error: Unsupported JSON format. It should be either a list or a dictionary.")
+                return None
+
+            return result_list
+
+    except FileNotFoundError:
+        print(f"Error: File not found at path {json_file_path}")
+        return None
+    except json.JSONDecodeError:
+        print(f"Error: Unable to decode JSON from {json_file_path}")
+        return None
+
+# Example usage:
+# json_file_path = 'path/to/your/json/file.json'
+# result = read_json_and_extract_values(json_file_path)
+# print(result)
+
+
+def iterate_through_data(json_data):
+    for data_dict in json_data:
+        for value in data_dict.values():
+            yield value
+
+def return_dict_from_dictlist(json_data_list):
+    for result_values in iterate_through_data(json_data_list):
+        return result_values
+    
+def output_all_final_docs(json_data_list, template_path:str = './templates/html/procuracao_mock1.html', output_folder:str = './output/html/'):
+    for json_output in iterate_through_data(json_data_list):
+        fill_html_with_json2(json_data = json_output, 
+                             template_path = template_path,
+                             output_folder = output_folder)
+                                    
+                                    # template_path = './templates/html/procuracao_mock1.html', 
+                                    # output_folder = './output/html/'
+
