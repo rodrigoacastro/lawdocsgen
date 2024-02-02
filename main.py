@@ -11,8 +11,8 @@ from utils.functions import *
 
 # Replace 'your_file_path.html' with the actual path to your HTML file
 
-template_json_data = process_file_and_save_to_json(file_path = './templates/html/procuracao_mock1.html',
-                                           output_json_file = './templates/json/html_fields.json')
+# template_json_data = process_file_and_save_to_json(file_path = './templates/html/procuracao_mock1.html',
+#                                            output_json_file = './templates/json/html_fields.json')
 
 # def process_file_and_save_to_json(data, template_content, output_folder):
 
@@ -55,8 +55,8 @@ template_json_data = process_file_and_save_to_json(file_path = './templates/html
 # Call the function to fill the HTML with data from the JSON
 
 # testing
-json_data = {"Nome": "NomeB", "RG": "RG2", "CPF": "CPF2", "Nome do Documento": "Nome do Documento2", 
-"Nome do Cart\u00f3rio": "Nome do Cart\u00f3rio2", "Cidade": "Cidade2", "Data": "DataB"}
+# json_data = {"Nome": "NomeB", "RG": "RG2", "CPF": "CPF2", "Nome do Documento": "Nome do Documento2", 
+# "Nome do Cart\u00f3rio": "Nome do Cart\u00f3rio2", "Cidade": "Cidade2", "Data": "DataB"}
 
 json_data2 = read_json_and_extract_values("./templates/json/fields_to_fill2.json")
 
