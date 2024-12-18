@@ -8,4 +8,6 @@ IMPORTANT: This project was in collaboration with Izabella Malta, which coordina
 
 Special note: the utils/classes folder is not yet in use, though the project could be remade using classes and using this folder. I will keep it for example's sake.
 
+And for those seeking to contribute to opensource projects, this project has fulfilled its purpose and it's no longer being maintained. You can still clone it.
+
 Cheers
